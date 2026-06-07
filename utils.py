@@ -29,7 +29,7 @@ def normalize_landmarks(landmarks):
         landmarks = landmarks / max_val #Divide todos los puntos por ese valor máximo. Resultado: todos los números quedan entre -1 y 1. Esto resuelve el problema de distancia — mano cerca o lejos, siempre el mismo rango.
     return landmarks #Devuelve el array normalizado con forma [21, 3] — mismo shape que antes, pero valores transformados.
 
-def build_hand_graph(landmarks):
+def build_hand_graph():
     edges = [
         (0,1),(1,2),(2,3),(3,4),        # pulgar
         (0,5),(5,6),(6,7),(7,8),         # índice
