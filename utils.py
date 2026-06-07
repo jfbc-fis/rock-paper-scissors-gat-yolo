@@ -37,10 +37,10 @@ def build_hand_graph(landmarks):
         (0,13),(13,14),(14,15),(15,16),  # anular
         (0,17),(17,18),(18,19),(19,20),  # meñique
         (5,9),(9,13),(13,17)             # nudillos
-    ]
+    ] #Una lista de tuplas. Cada tupla (a, b) significa "el nodo a está conectado con el nodo b". Son las aristas del grafo
     edge_index = torch.tensor(
         [[e[0] for e in edges] + [e[1] for e in edges],
          [e[1] for e in edges] + [e[0] for e in edges]],
-        dtype=torch.long
+        dtype=torch.long #Esto reorganiza las conexiones en el formato que PyTorch Geometric espera. En lugar de lista de tuplas, necesita dos listas separadas: Origen y Destino
     )
     return edge_index
