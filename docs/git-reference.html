@@ -1,0 +1,106 @@
+
+<style>
+  .cc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; padding: 1rem 0; }
+  .cc-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.25rem; }
+  .cc-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .cc-badge { font-family: var(--font-mono); font-size: 13px; font-weight: 500; padding: 3px 10px; border-radius: var(--border-radius-md); }
+  .cc-desc { font-size: 14px; color: var(--color-text-secondary); margin: 0 0 10px; line-height: 1.5; }
+  .cc-example { font-family: var(--font-mono); font-size: 12px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); padding: 8px 10px; color: var(--color-text-secondary); word-break: break-all; }
+  .cc-example span { color: var(--color-text-primary); font-weight: 500; }
+  .section-title { font-size: 13px; font-weight: 500; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.05em; margin: 1.5rem 0 0.5rem; }
+  .rule-box { background: var(--color-background-secondary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.25rem; margin-top: 1rem; }
+  .rule-row { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; padding: 6px 0; border-bottom: 0.5px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .rule-row:last-child { border-bottom: none; }
+  .rule-row i { margin-top: 2px; flex-shrink: 0; }
+</style>
+
+<h2 class="sr-only">Referencia completa de Conventional Commits para Git</h2>
+
+<p class="section-title">tipos de commit más usados</p>
+<div class="cc-grid">
+
+  <div class="cc-card">
+    <div class="cc-header">
+      <i class="ti ti-file-text" style="font-size:20px; color: var(--color-text-info);" aria-hidden="true"></i>
+      <span class="cc-badge" style="background:#E6F1FB; color:#0C447C;">docs:</span>
+    </div>
+    <p class="cc-desc">Cambios en documentación. README, comentarios en el código, guías de uso.</p>
+    <div class="cc-example"><span>docs:</span> add README with project overview</div>
+  </div>
+
+  <div class="cc-card">
+    <div class="cc-header">
+      <i class="ti ti-sparkles" style="font-size:20px; color: var(--color-text-success);" aria-hidden="true"></i>
+      <span class="cc-badge" style="background:#EAF3DE; color:#27500A;">feat:</span>
+    </div>
+    <p class="cc-desc">Nueva funcionalidad (feature). Algo que antes no existía en el proyecto.</p>
+    <div class="cc-example"><span>feat:</span> add real-time gesture detection with GAT</div>
+  </div>
+
+  <div class="cc-card">
+    <div class="cc-header">
+      <i class="ti ti-bug" style="font-size:20px; color: var(--color-text-danger);" aria-hidden="true"></i>
+      <span class="cc-badge" style="background:#FCEBEB; color:#791F1F;">fix:</span>
+    </div>
+    <p class="cc-desc">Corrección de un error (bug). El código existía pero fallaba.</p>
+    <div class="cc-example"><span>fix:</span> resolve batch_size mismatch in DataLoader</div>
+  </div>
+
+  <div class="cc-card">
+    <div class="cc-header">
+      <i class="ti ti-settings" style="font-size:20px; color: var(--color-text-secondary);" aria-hidden="true"></i>
+      <span class="cc-badge" style="background:#F1EFE8; color:#444441;">chore:</span>
+    </div>
+    <p class="cc-desc">Mantenimiento que no afecta el código funcional. Configuraciones, dependencias, .gitignore.</p>
+    <div class="cc-example"><span>chore:</span> add Python .gitignore with project rules</div>
+  </div>
+
+  <div class="cc-card">
+    <div class="cc-header">
+      <i class="ti ti-arrows-exchange" style="font-size:20px; color: var(--color-text-warning);" aria-hidden="true"></i>
+      <span class="cc-badge" style="background:#FAEEDA; color:#633806;">refactor:</span>
+    </div>
+    <p class="cc-desc">Mejorar el código sin cambiar lo que hace. Más legible, más eficiente, mismos resultados.</p>
+    <div class="cc-example"><span>refactor:</span> extract landmark normalization to utils</div>
+  </div>
+
+  <div class="cc-card">
+    <div class="cc-header">
+      <i class="ti ti-test-pipe" style="font-size:20px; color: var(--color-text-info);" aria-hidden="true"></i>
+      <span class="cc-badge" style="background:#EEEDFE; color:#3C3489;">test:</span>
+    </div>
+    <p class="cc-desc">Agregar o modificar pruebas. No cambia el código de producción.</p>
+    <div class="cc-example"><span>test:</span> add unit tests for graph builder function</div>
+  </div>
+
+  <div class="cc-card">
+    <div class="cc-header">
+      <i class="ti ti-cpu" style="font-size:20px; color: var(--color-text-success);" aria-hidden="true"></i>
+      <span class="cc-badge" style="background:#E1F5EE; color:#085041;">perf:</span>
+    </div>
+    <p class="cc-desc">Mejora de rendimiento. El código hace lo mismo pero más rápido o con menos memoria.</p>
+    <div class="cc-example"><span>perf:</span> move model inference to GPU with .cuda()</div>
+  </div>
+
+  <div class="cc-card">
+    <div class="cc-header">
+      <i class="ti ti-layout" style="font-size:20px; color: var(--color-text-secondary);" aria-hidden="true"></i>
+      <span class="cc-badge" style="background:#FBEAF0; color:#72243E;">style:</span>
+    </div>
+    <p class="cc-desc">Formato del código: espacios, indentación, punto y coma. Sin cambios de lógica.</p>
+    <div class="cc-example"><span>style:</span> reformat utils.py with consistent spacing</div>
+  </div>
+
+</div>
+
+<p class="section-title" style="margin-top:2rem;">estructura de un commit</p>
+<div class="rule-box">
+  <div style="font-family: var(--font-mono); font-size: 14px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); padding: 12px 14px; margin-bottom: 12px;">
+    <span style="color: var(--color-text-info);">tipo</span><span style="color: var(--color-text-secondary);">:</span> <span style="color: var(--color-text-primary);">descripción corta en inglés</span>
+  </div>
+  <div class="rule-row"><i class="ti ti-check" style="font-size:16px; color:var(--color-text-success);" aria-hidden="true"></i>Usa inglés — tu repositorio es público y mundial</div>
+  <div class="rule-row"><i class="ti ti-check" style="font-size:16px; color:var(--color-text-success);" aria-hidden="true"></i>Máximo 72 caracteres en la descripción</div>
+  <div class="rule-row"><i class="ti ti-check" style="font-size:16px; color:var(--color-text-success);" aria-hidden="true"></i>Verbo en presente: "add", "fix", "remove" — no "added" ni "adding"</div>
+  <div class="rule-row"><i class="ti ti-x" style="font-size:16px; color:var(--color-text-danger);" aria-hidden="true"></i>Evita mensajes vagos: "changes", "update", "fix stuff"</div>
+  <div class="rule-row"><i class="ti ti-x" style="font-size:16px; color:var(--color-text-danger);" aria-hidden="true"></i>Un commit = una sola cosa. No mezcles feat + fix en el mismo commit</div>
+</div>
