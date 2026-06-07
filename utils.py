@@ -11,11 +11,19 @@ class HandLandmarkExtractor:
             min_detection_confidence=0.7 #sólo reporta landmarks si está 70% seguro de haber detectado una mano
         )
     def extract(self, frame):
-        frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-        results = self.hands.process(frame_rgb)
+        frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB) #Convierte el frame de BGR (OpenCV) a RGB (Mediapipe)
+        results = self.hands.process(frame_rgb) #MediaPipe analiza la imagen y busca manos. results contiene todo lo que encontró.
         
-        if results.multi_hand_landmarks:
-            landmarks = results.multi_hand_landmarks[0]
-            return np.array([[lm.x, lm.y, lm.z] 
+        if results.multi_hand_landmarks: #Pregunta: ¿encontró al menos una mano? Si no hay mano en el frame, multi_hand_landmarks es None y saltamos al return None.
+            landmarks = results.multi_hand_landmarks[0] #Toma la primera mano detectada — ( configuramos max_num_hands=1)
+            return np.array([[lm.x, lm.y, lm.z] #Recorre los 21 landmarks y construye un array con forma [21, 3]
                             for lm in landmarks.landmark])
         return None
+
+def normalize_landmarks(landmarks):
+    base = landmarks[0].copy() #la muñeca
+    landmarks = landmarks - base #Resta la muñeca a todos los 21 puntos para dejar la muñeca en el centro (0, 0, 0)
+    max_val = np.max(np.abs(landmarks)) #Encuentra el valor absoluto más grande entre todos los 63 números.
+    if max_val > 0:
+        landmarks = landmarks / max_val #Divide todos los puntos por ese valor máximo. Resultado: todos los números quedan entre -1 y 1. Esto resuelve el problema de distancia — mano cerca o lejos, siempre el mismo rango.
+    return landmarks #Devuelve el array normalizado con forma [21, 3] — mismo shape que antes, pero valores transformados.
