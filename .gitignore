@@ -26,3 +26,6 @@ runs/
 # Windows
 Thumbs.db
 desktop.ini
+
+src/rock-paper-scissors-1/
+src/runs/
