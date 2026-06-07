@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Entorno virtual
+venv/
+env/
+
+# Credenciales y configuración sensible
+.env
+config.py
+
+# Modelos entrenados (pesan demasiado)
+*.pt
+*.pth
+runs/
+
+# Dataset grande
+*.csv
+
+# VS Code
+.vscode/
+
+# Windows
+Thumbs.db
+desktop.ini
